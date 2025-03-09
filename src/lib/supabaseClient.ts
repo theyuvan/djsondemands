@@ -1,35 +1,6 @@
+import { createClient } from '@supabase/supabase-js';
 
-// This is a placeholder for the Supabase client
-// When you're ready to integrate Supabase, you'll need to:
-// 1. Install the Supabase client: npm install @supabase/supabase-js
-// 2. Replace this file with actual Supabase client configuration
-
-export const supabase = {
-  from: (table: string) => ({
-    insert: async (data: any[]) => {
-      console.log(`Mocked insert into ${table}:`, data);
-      return {
-        data: { id: "mock-id" },
-        error: null
-      };
-    },
-    select: async () => {
-      console.log(`Mocked select from ${table}`);
-      return {
-        data: [],
-        error: null
-      };
-    }
-  }),
-  storage: {
-    from: (bucket: string) => ({
-      upload: async (path: string, file: File) => {
-        console.log(`Mocked file upload to ${bucket}/${path}`);
-        return {
-          data: { path },
-          error: null
-        };
-      }
-    })
-  }
-};
+export const supabase = createClient(
+  'https://jacecfkyvowsylckxojv.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphY2VjZmt5dm93c3lsY2t4b2p2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE0NDk0NTIsImV4cCI6MjA1NzAyNTQ1Mn0.2fmlTtJYtDK5ztupHX1UNOymfSsGpmNYImeH6pbA6wo'
+);
