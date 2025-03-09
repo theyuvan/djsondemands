@@ -1,25 +1,31 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
-const NotFound = () => {
-  const location = useLocation();
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Home, ArrowLeft } from 'lucide-react';
+import Logo from '@/components/Logo';
 
-  useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
-
+const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="min-h-screen hero-gradient flex flex-col items-center justify-center p-6">
+      {/* Logo at the top */}
+      <div className="absolute top-8 left-8">
+        <Logo />
       </div>
+      
+      <div className="glass-card p-8 rounded-2xl max-w-md w-full text-center">
+        <h1 className="text-6xl font-display font-bold mb-2 text-glow">404</h1>
+        <p className="text-xl text-white/80 mb-6">This track doesn't exist</p>
+        
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent my-6" />
+        
+        <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to homepage</span>
+        </Link>
+      </div>
+      
+      {/* Background gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </div>
   );
 };
