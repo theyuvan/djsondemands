@@ -7,6 +7,13 @@ const Index: React.FC = () => {
   useEffect(() => {
     document.body.classList.add('animate-fade-in');
     
+    // Force any animations to complete immediately
+    setTimeout(() => {
+      document.querySelectorAll('.opacity-0').forEach(el => {
+        el.classList.remove('opacity-0');
+      });
+    }, 100);
+    
     return () => {
       document.body.classList.remove('animate-fade-in');
     };

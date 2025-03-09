@@ -15,6 +15,8 @@ const HeroSection: React.FC = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-up');
+            // Remove the opacity-0 class permanently
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
@@ -46,30 +48,31 @@ const HeroSection: React.FC = () => {
       
       {/* Hero content */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 animate-on-scroll opacity-0">
+        <div className="inline-flex items-center gap-2 px-4 py-2 mb-4 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
           <AudioWave barCount={3} />
           <span className="text-sm font-medium text-white/80">The #1 Platform for DJs</span>
         </div>
         
         <h1 
           ref={titleRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-glow animate-on-scroll opacity-0"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 text-glow"
         >
           <span className="block">Premium DJ Service</span>
           <span className="text-primary">On Demand</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 animate-on-scroll opacity-0">
+        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10">
           Connect with top DJs or find premium gigs on the most advanced platform 
           designed for professional music artists and event organizers.
         </p>
         
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 animate-on-scroll opacity-0">
+        {/* User type buttons - removed the opacity-0 and animate-on-scroll classes */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <UserTypeButton type="dj" />
           <UserTypeButton type="company" />
         </div>
         
-        <div className="mt-12 animate-on-scroll opacity-0">
+        <div className="mt-12">
           <button className="flex items-center gap-2 mx-auto text-white/60 hover:text-white transition-colors group">
             <span>Learn how it works</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
