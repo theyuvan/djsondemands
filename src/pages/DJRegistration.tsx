@@ -1,10 +1,14 @@
 
 import React, { useState } from 'react';
 import { Music, Upload, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '@/components/Logo';
 
+
+
+
 const DJRegistration: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     stageName: "",
@@ -69,6 +73,8 @@ const DJRegistration: React.FC = () => {
     // This is where the Supabase connection would be implemented
     console.log('Form submitted:', formData);
     alert('DJ Registration submitted successfully!');
+
+    window.location.href = "/Dashboard";
   };
 
   return (
@@ -371,11 +377,12 @@ const DJRegistration: React.FC = () => {
 
             {/* Submit Button */}
             <div className="form-group md:col-span-2 text-center mt-6">
-              <button 
+              <button
+                onClick={() => navigate('/Dashboard')}
                 type="submit" 
                 className="bg-dj text-white hover:bg-dj-dark hover:scale-105 button-glow transition-all duration-300 px-8 py-3 rounded-xl font-semibold"
-              >
-                Submit Registration
+              > 
+                Submit Registration 
               </button>
             </div>
           </div>
